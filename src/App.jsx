@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 import './App.css'
 import Items from './Items';
@@ -8,6 +8,9 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   
   //  console.log("this is input",input)
+
+const isFirstRender = useRef(true);
+
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -25,6 +28,27 @@ const App = () => {
     setTodos([...todos, newTodo]);
     setInput("");
   }
+
+useEffect(() => {
+ const savedTodos = JSON.parse(localStorage.getItem("todos"));
+
+ if (savedTodos) setTodos(savedTodos);
+
+}, [])
+
+
+useEffect(() => {
+  if(isFirstRender.current) {
+    isFirstRender.current = false;
+    return;
+  }
+  localStorage.setItem("todos", JSON.stringify(todos));
+
+
+}, [todos])
+
+
+
 
   const deleteTodo = (id) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
@@ -54,3 +78,4 @@ const App = () => {
 }
 
 export default App
+   

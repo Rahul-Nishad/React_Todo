@@ -3,8 +3,11 @@ import React from 'react'
 const Items = ({ data, deleteTodo ,id }) => {
   return (
     <>
-    <li>{data}</li>
+    <div>
+    <li className='todo-item'>{data}
     <button onClick={() => deleteTodo(id)}> Delete </button>
+    </li>
+    </div>
     </>
   )
 }

@@ -69,5 +69,33 @@ ul{
 .todo-item{
   background-color: #1c1c1c;
   border: 1px solid #333;
-  
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease;
+  font-weight: bold;
+
+}
+
+.todo-item:hover{
+  background: #292929;
+}
+
+.todo-item button{
+  background: #ff1744;
+  border: none;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.todo-item button:hover{
+  background: #d50000;
+}
+
+.todo-item.completed{
+  text-decoration: line-through;
+  color: #636060;
 }
